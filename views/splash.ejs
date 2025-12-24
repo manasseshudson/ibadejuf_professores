@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>IBADEJUF</title>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#5B50E5",
+        "primary-dark": "#483FC4",
+        "background-light": "#FFFFFF",
+        "background-dark": "#18181B",
+        "input-border-light": "#E5E7EB",
+      },
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+      },
+      borderRadius: {
+        xl: "1rem",
+        "2xl": "1.5rem",
+        "3xl": "2rem",
+      },
+    },
+  },
+};
+</script>
+
+<style>
+.curved-bottom {
+  border-bottom-left-radius: 50% 18%;
+  border-bottom-right-radius: 50% 18%;
+}
+</style>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 font-sans">
+
+<!-- Container principal -->
+<div class="
+  w-full
+  min-h-screen
+  bg-background-light
+  dark:bg-background-dark
+  flex
+  flex-col
+">
+
+  <!-- Imagem -->
+  <div class="
+    relative
+    w-full
+    h-[38vh]
+    sm:h-[42vh]
+    md:h-[32vh]
+    shrink-0
+  ">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent z-10 curved-bottom"></div>
+    <img 
+      class="w-full h-full object-cover curved-bottom"
+      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUUhLi5vsqaqLWnA8LAnVuiM7juM46dzpAnMwQJtlzS_WWluu1MpvQ1cxRzv-qm6cY73MiIfcH68xyhtupMV79E5N-jpJc1erENxEitE1-neR2VBAxUZLDB-CgSgZlIjI6AeMCZFXN4yTrg8xam4qgRPq5WiSa4CJ5TgsyRZN3847VbRIRfID5xgFGHkXRdnOne_H4WYSDzFtAkOHqmrfLR4TWdmGuxk8UpTB3cB99EG2yRVMwnHZ5dQAWILlqMkAbDgkLk3KA1fI"
+      alt="Educação"
+    />
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="
+    flex-1
+    px-6
+    sm:px-8
+    md:px-12
+    pt-6
+    md:pt-4
+    pb-10
+    flex
+    flex-col
+    justify-start
+    md:justify-center
+  ">
+
+    <!-- Cabeçalho -->
+    <div class="mb-10 text-center">
+      <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold text-primary mb-2">
+        Olá Professor!
+      </h1>
+      <p class="text-gray-500 text-sm md:text-lg">
+        Seja Bem-Vindo
+      </p>
+    </div>
+
+    <!-- Form -->
+    <form class="space-y-8 w-full max-w-md md:max-w-2xl mx-auto" id="loginForm">
+
+      <!-- CPF -->
+      <div>
+        <label class="block text-sm md:text-lg font-semibold text-primary ml-1 mb-2">
+          CPF
+        </label>
+        <div class="relative">
+          <input
+			id="cpf"
+			name="cpf"
+            type="text"
+            placeholder="000.000.000-00"
+            class="w-full px-6  py-4 md:py-6 text-base md:text-xl rounded-2xl border border-input-border-light bg-white focus:outline-none focus:ring-2 focus:ring-primary cpf"
+          />
+          <span class="absolute right-5 top-5 md:top-7 text-gray-400 material-icons">
+            badge
+          </span>
+        </div>
+      </div>
+
+      <!-- Senha -->
+      <div>
+        <label class="block text-sm md:text-lg font-semibold text-primary ml-1 mb-2">
+          Senha
+        </label>
+        <div class="relative">
+          <input
+            type="password"
+			name="senha"
+			id="senha"
+            placeholder="Digite sua senha"
+            class="w-full px-6 py-4 md:py-6 text-base md:text-xl rounded-2xl border border-input-border-light bg-white focus:outline-none focus:ring-2 focus:ring-primary
+            "
+          />
+          <span class="absolute right-5 top-5 md:top-7 text-gray-400 material-icons cursor-pointer">
+            visibility_off
+          </span>
+        </div>
+      </div>
+
+      <!-- Botão -->
+      <button type="submit"
+        class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 md:py-6 text-base md:text-xl rounded-2xl shadow-lg transition-all active:scale-95"
+      >
+        Acessar
+      </button>
+
+      <!-- Esqueceu -->
+      <div class="text-center pt-4">
+        <a href="#" class="text-sm md:text-lg text-gray-500 hover:text-primary">
+          Esqueceu sua senha?
+        </a>
+      </div>
+
+    </form>
+  </div>
+</div>
+<script>
+	document.getElementById('cpf').addEventListener('input', function (e) {
+		let value = e.target.value.replace(/\D/g, '');
+
+		if (value.length > 11) {
+			value = value.slice(0, 11);
+		}
+
+		value = value.replace(/(\d{3})(\d)/, '$1.$2');
+		value = value.replace(/(\d{3})(\d)/, '$1.$2');
+		value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+
+		e.target.value = value;
+	});
+	async function gerarHashSHA256(mensagem) {
+			const msgBuffer = new TextEncoder().encode(mensagem);                    
+			const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+			
+			// Converte o buffer para string hexadecimal
+			const hashArray = Array.from(new Uint8Array(hashBuffer));
+			const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+			
+			return hashHex;
+		}
+		
+	const form = document.getElementById("loginForm");
+	form.addEventListener("submit", (e) => {
+		e.preventDefault();
+	
+
+		//gerarHashSHA256("cpf").then(hash => console.log(hash));
+			
+		
+		
+		const cpf = form.cpf.value.trim();
+		const senha = form.senha.value.trim();
+
+		const postData = {
+		  cpf,				  
+		  senha
+		};
+		console.log(postData)
+		fetch('/login', {
+		  method: 'POST', // Specify the HTTP method
+		  headers: {
+			'Content-Type': 'application/json' // Indicate the content type of the body
+		  },
+		  body: JSON.stringify(postData) // Convert the JavaScript object to a JSON string
+		})
+		.then(response => {
+			  if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			  }
+			  return response.json(); // Parse the JSON response
+		})
+		.then(data => {
+			console.log('Success:', data); // Handle the successful response data
+			//alert(data)
+			if(data.mensagem =="Bem Vindo Administrador"){
+				setTimeout(() => {
+					window.location.href = "/mod/"+cpf.replace('.','').replace('.','').replace('-',''); // redireciona para a página da lista de presença
+				}, 1500);
+			}
+		})
+		.catch(error => {
+		  console.error('Error:', error); // Handle any errors during the fetch operation
+		});
+	
+	})
+
+
+</script>
+
+</body>
+</html>

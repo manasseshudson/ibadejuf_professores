@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registro de Notas</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+
+
+    <style>
+        /* Ajustes finos de mobile first */
+        h4 {
+            font-size: 1.2rem;
+        }
+
+        @media (min-width: 768px) {
+            h4 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+<div class="container py-3 py-md-5">
+    <div class="card shadow-sm border-0 p-3 p-md-4 mx-auto" style="max-width: 650px;">
+		<!-- Barra superior -->
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<!-- Barra superior -->
+<div class="d-flex align-items-center mb-3 px-2 pt-3">
+    <button onclick="history.back()" 
+            class="btn btn-light border rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+            style="width: 40px; height: 40px;">
+        <i class="bi bi-arrow-left fs-5"></i>
+    </button>
+
+    <h4 class="fw-bold text-center flex-grow-1 m-0">Aluno: <%= nomeAluno %></h4>
+
+    <div style="width:40px;"></div> <!-- balanceamento -->
+</div>
+
+        <!-- Tags -->
+        <div class="mb-3 d-flex flex-column gap-2">
+            <span class="badge rounded-pill bg-success-subtle border text-success px-3 py-2" style="font-size: 17px; border-radius: 7px !important;">
+                ● Matéria - <%= materia %>
+            </span>
+            <span class="badge rounded-pill bg-success-subtle border text-success px-3 py-2" style="font-size: 17px; border-radius: 7px !important;">
+                ● Professor - <%= professor %>
+            </span>
+        </div>
+
+        <!-- Formulário -->
+        
+            <div class="row g-3">
+
+                <!-- Tipo de nota -->
+                <div class="col-12 col-md-8">
+                    <label class="form-label fw-semibold">Tipo de Nota</label>
+                    <select class="form-select" id="tipo">
+                        <option selected value="Selecione" disabled>Selecione</option>
+                        <option value="Prova">Prova</option>
+                        <option value="Trabalho">Trabalho</option>
+                        <option value="Exercícios">Exercícios</option>
+                        <option value="Presença">Presença</option>
+                    </select>
+                </div>
+
+                <!-- Nota -->
+                <div class="col-12 col-md-4">
+                    <label class="form-label fw-semibold">Nota</label>
+                    <input type="number" id="nota"
+                           class="form-control"
+                           placeholder="0 - 10"
+                           step="0.1"
+                           min="0"
+                           max="10">
+                </div>
+
+                <!-- Botão -->
+                <div class="col-12 text-end">
+                    <button class="btn btn-primary w-100 w-md-auto px-4" onclick=enviarNota()>
+                        Enviar Nota
+                    </button>
+                </div>
+            </div>
+        
+
+        <!-- Listagem de notas -->
+        <div class="mt-4">
+			<div class="mt-4">
+				<h4 class="fw-bold">Notas Aplicadas</h4>
+					<% notasAlunos.forEach(dados=> { %>
+					<!-- Card de Nota (repita dinamicamente com JS) -->
+					<div class="card shadow-sm mb-3 rounded-3">
+						<div class="card-body">
+							<div class="d-flex justify-content-between align-items-center">
+								<h5 class="card-title mb-0 fw-semibold"><%= dados.tipo %></h5>
+								<a href="/remNotaAluno/<%= id_aluno %>/<%= id_professor %>/<%= id_materia %>/<%= modulo %>/<%= dados.id_notas_alunos %>">
+								<button class="btn btn-sm btn-outline-danger rounded-circle">
+									<i class="bi bi-trash"></i>
+								</button></a>
+							</div>
+							<p class="mt-2 mb-1">
+								<strong>Nota:</strong> <%= dados.nota %>
+							</p>
+							<p class="mb-1">
+								<strong>Data:</strong> <%= dados.data %>
+							</p>
+							<p class="mb-1">
+								<strong>Hora:</strong> <%= dados.hora %>
+							</p>
+							<p class="mb-0">
+								<strong>Professor:</strong> <%= dados.nome %>
+							</p>
+						</div>
+					</div>
+				<% }) %>
+			</div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+	function enviarNota(){
+		//alert(tipo);
+		notaAluno();
+	}
+	document.getElementById("openMenu").onclick = () => {
+      menu.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    };
+
+	
+	function notaAluno() {
+		
+		let tipo = document.getElementById('tipo').value;
+		let nota = document.getElementById('nota').value;
+		
+		console.log(nota);
+		
+		
+		if(tipo=="Selecione"){
+			alert("Informe o Tipo de Nota.");
+			return;
+		}
+		
+		if(nota==""){
+			alert("Informe uma Nota.");
+			return;
+		}
+		
+		
+		const postData = {
+			id_professor: <%= id_professor %>,
+			id_aluno: <%= id_aluno %>,
+			id_materia: <%= id_materia %>,
+			id_modulo: <%= modulo %>,
+			data: dataAtualFormatada(),
+			hora: horaAtual(),
+			tipo,
+			nota
+		  };
+		  
+		  console.log(nota)
+		
+	  fetch('/enviarNota', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify(postData)
+	  })
+	  .then(response => {
+		if (!response.ok) throw new Error(`Erro HTTP! status: ${response.status}`);
+		return response.json();
+	  })
+	  .then(() => {
+		alert("Nota Enviada com Sucesso.")
+		window.location.href = `/aluno_nota/<%= id_aluno %>/<%= id_professor %>/<%= id_materia %>/<%= modulo %>`
+	  })
+	  .catch(error => console.error('Erro:', error));
+	}
+	function horaAtual() {
+      const data = new Date();
+      return `${String(data.getHours()).padStart(2,"0")}:${String(data.getMinutes()).padStart(2,"0")}:${String(data.getSeconds()).padStart(2,"0")}`;
+    }
+
+    function dataAtualFormatada() {
+      const data = new Date();
+      return `${String(data.getDate()).padStart(2,"0")}/${String(data.getMonth()+1).padStart(2,"0")}/${data.getFullYear()}`;
+    }
+</script>
+</body>
+</html>

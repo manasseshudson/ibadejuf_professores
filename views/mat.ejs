@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Available Subjects List</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#5B4DFF", 
+              "primary-dark": "#4639cc",
+              "background-light": "#F8F9FE",
+              "background-dark": "#121212",
+              "card-light": "#FFFFFF",
+              "card-dark": "#1E1E1E",
+              "text-main-light": "#1F2937",
+              "text-main-dark": "#F3F4F6",
+              "text-sub-light": "#6B7280",
+              "text-sub-dark": "#9CA3AF",
+            },
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+              sans: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              "xl": "1.25rem",
+              "2xl": "1.5rem",
+              "3xl": "2rem",
+            },
+            boxShadow: {
+              'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+            }
+          },
+        },
+      };
+    </script>
+<style>
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark transition-colors duration-300 min-h-screen relative pb-6">
+<div class="h-10 w-full"></div>
+<header class="px-6 pt-2 pb-4 flex justify-between items-center">
+	<div class="flex items-center gap-2">
+		<a href="/modulos/<%= cpf %>/<%= id_professor %>">
+			<button class="p-2 -ml-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+				<span class="material-icons-round text-3xl text-primary">arrow_back</span>
+			</button>
+		</a>
+	</div>
+	<div class="flex items-center gap-3">
+		<div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border-2 border-primary">
+			<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3GHW-R1kqc1LOnEpkMsYrWIk0ZtyPB7uZFB0ORFmIbVn5JUldFZeykB0etFh9J6VaXhOYgDMVNMictWA1jh_JIQKPEUjKw84BBaJrxvgizGAcyW51k9bxD6dD5BqS1jO6AehzergYHdrsM2momh5L0rX4RAHO12dRuTSaeOrqZxbwnzY3mHb8CP_1Dx5E-pzAv6swI5BxlR5ufvfImHKRr1QBxIpvUcjSpVSS6guapU0jMXdjmu4hrSwViAEai3kRk3AEgSi_EQM"/>
+		</div>
+	</div>
+</header>
+<div class="px-6 mb-6">
+<h1 class="text-2xl font-bold text-primary dark:text-white leading-tight">
+        Matérias Disponíveis<br/>
+<span class="text-text-main-light dark:text-gray-400 font-normal text-lg"></span>
+</h1>
+</div>
+<div class="px-6 mb-6">
+<div class="relative flex items-center w-full h-14 rounded-2xl focus-within:shadow-lg bg-white dark:bg-card-dark shadow-soft transition-all overflow-hidden border border-transparent focus-within:border-primary/30">
+<div class="grid place-items-center h-full w-12 text-gray-400">
+<span class="material-icons-round">search</span>
+</div>
+<input class="peer h-full w-full outline-none text-sm text-gray-700 dark:text-gray-200 pr-2 bg-transparent placeholder-gray-400 font-medium border-none focus:ring-0" id="search" placeholder="Pesquisar Matérias..." type="text"/>
+<div class="grid place-items-center h-full w-12 text-primary cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors border-l border-gray-100 dark:border-gray-700">
+<span class="material-icons-round">filter_list</span>
+</div>
+</div>
+</div>
+
+<div class="px-6">
+<div class="flex flex-col gap-4 mb-6">
+	
+	<div class="relative rounded-1xl overflow-hidden shadow-sm bg-white dark:bg-card-dark flex p-4 group cursor-pointer border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all active:scale-[0.99]">
+		<div class="flex-1 min-w-0 flex flex-col justify-center">
+			<div class="flex justify-between items-start mb-1">
+				<h3 class="text-text-main-light dark:text-white font-bold text-xl truncate pr-2">Teologia Sistemática I </h3>
+			</div>
+			<div class="flex items-center gap-2 mb-2">
+				<span class="material-icons-round text-sm text-text-sub-light dark:text-gray-500">person</span>
+				<p class="text-xs text-text-sub-light dark:text-gray-400 font-medium">Presentes: 10</p>
+			</div>
+		</div>
+	</div>
+	
+
+</div>
+</div>
+</body></html>

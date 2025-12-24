@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Sistema de Presença</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+  <div class="bg-white shadow-md rounded-2xl w-11/12 sm:w-96 p-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2 text-center">Acessar Sistema</h1>
+    <p class="text-gray-500 text-center mb-6">Insira suas credenciais para continuar</p>
+
+    <form id="loginForm" class="flex flex-col gap-4">
+      <div>
+        <label for="email" class="block text-gray-700 font-medium mb-1">E-mail</label>
+        <input type="email" id="email" name="email" required value="ibadejuf2025@gmail.com"
+          class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+      </div>
+
+      <div>
+        <label for="senha" class="block text-gray-700 font-medium mb-1">Senha</label>
+        <input type="password" id="senha" name="senha" required value="123456"
+          class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+      </div>
+
+      <button type="submit"
+        class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 rounded-xl transition">
+        Entrar
+      </button>
+    </form>
+
+    <p id="mensagem" class="text-center mt-4 text-sm text-gray-500"></p>
+  </div>
+
+	<script>
+		const form = document.getElementById("loginForm");
+		const msg = document.getElementById("mensagem");
+
+		form.addEventListener("submit", (e) => {
+			e.preventDefault();
+
+			const email = form.email.value.trim();
+			const senha = form.senha.value.trim();
+
+			// Exemplo de validação simples (você pode substituir pela sua lógica real)
+			if (email === "ibadejuf2025@gmail.com" && senha === "123456") {
+				msg.textContent = "✅ Login realizado com sucesso!";
+				msg.className = "text-center mt-4 text-sm text-green-600";
+				
+				const postData = {
+				  email,				  
+				  senha
+				};
+
+				fetch('/login', {
+				  method: 'POST', // Specify the HTTP method
+				  headers: {
+					'Content-Type': 'application/json' // Indicate the content type of the body
+				  },
+				  body: JSON.stringify(postData) // Convert the JavaScript object to a JSON string
+				})
+				.then(response => {
+				  if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
+				  }
+				  return response.json(); // Parse the JSON response
+				})
+				.then(data => {
+					console.log('Success:', data); // Handle the successful response data
+					//alert(data)
+					if(data.mensagem =="Bem Vindo Administrador"){
+						//alert(data.mensagem)
+						setTimeout(() => {
+							window.location.href = "/professores"; // redireciona para a página da lista de presença
+						}, 1500);
+					}else{
+						setTimeout(() => {
+							window.location.href = "/professores"; // redireciona para a página da lista de presença
+						}, 1500);
+					}
+				})
+				.catch(error => {
+				  console.error('Error:', error); // Handle any errors during the fetch operation
+				});
+				
+				
+				
+				
+				/*
+				setTimeout(() => {
+					window.location.href = "index.html"; // redireciona para a página da lista de presença
+				}, 1500);*/
+			} else {
+				msg.textContent = "❌ E-mail ou senha inválidos.";
+				msg.className = "text-center mt-4 text-sm text-red-500";
+			}
+		});
+		
+	</script>
+
+</body>
+</html>

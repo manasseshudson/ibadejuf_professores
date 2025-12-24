@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seleção de Módulos</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Material Symbols & Lexend -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1a2234",
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem", 
+              "lg": "0.5rem", 
+              "xl": "0.75rem", 
+              "2xl": "1rem",
+              "full": "9999px"
+            },
+            boxShadow: {
+              'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+              'glow': '0 4px 20px 0px rgba(19, 91, 236, 0.15)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0d121b] dark:text-white transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto overflow-hidden bg-background-light dark:bg-background-dark">
+<!-- Top App Bar with User Profile -->
+<header class="flex items-center justify-between p-6 pt-12 pb-2">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-white dark:border-surface-dark shadow-sm" data-alt="User profile picture of a student smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD6OIaYaUrrbYxQcENEkpMeLDDOqmM6EyVToIoGStooSOBsRuBAdrcm7ViVKdOFZoMDNi3bHYwsSNTWjH-5WCpGrN0_qVfIb-8asDJgxHg0a1jpWrQNPyD7OXdSukg4jngcN5jSeR_Bt9EKxGwGLdbJbKALdvBMnh2pnXxkssEaj7qRAFlg_pUf5uCchcrQ7yLHO19FKR4o66f0VT0agpKdz8gOcG_IEgKZ-PXUUYmm-F2L5yDQ2BmGGenxkon2Q0s1GWGjPFg6bxb0");'>
+</div>
+<div class="absolute bottom-0 right-0 size-2.5 bg-green-500 rounded-full border-2 border-background-light dark:border-background-dark"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-[#4c669a] dark:text-gray-400 font-medium" style="font-size:15px">Professor(a)</span>
+<span class="text-2x1 font-bold leading-tight" style="font-size:22px">Sofia Oliveira</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col px-6 pb-6 overflow-y-auto hide-scrollbar">
+<!-- Headline Section -->
+<div class="mt-4 mb-6">
+<h1 class="text-primary dark:text-blue-400 tracking-tight text-3xl font-bold leading-tight mb-2">
+                    
+                </h1>
+<p class="text-[#4c669a] dark:text-gray-400 text-base font-normal leading-relaxed">
+                    Selecione o módulo abaixo.
+                </p>
+</div>
+<!-- Cards Container -->
+<div class="flex flex-col gap-4">
+<!-- Card 1: 1º Ano -->
+<div class="group relative cursor-pointer">
+<div class="absolute inset-0 bg-primary/5 dark:bg-primary/10 rounded-2xl transform transition-transform duration-300 group-hover:scale-[1.02] group-active:scale-[0.98]"></div>
+<div class="relative flex items-center justify-between gap-4 rounded-2xl bg-white dark:bg-surface-dark p-4 shadow-soft hover:shadow-glow border border-transparent hover:border-primary/20 transition-all duration-300">
+<div class="flex flex-col gap-1.5 flex-[2_2_0px] pl-2">
+<span class="inline-flex items-center justify-center w-fit px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 mb-1">
+                                Ensino Fundamental
+                            </span>
+<h3 class="text-[#0d121b] dark:text-white text-xl font-bold leading-tight">1º Ano</h3>
+<p class="text-[#4c669a] dark:text-gray-400 text-sm font-normal">Turma A - Manhã</p>
+</div>
+<div class="w-24 h-24 shrink-0 rounded-xl overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent z-10"></div>
+<div class="w-full h-full bg-center bg-no-repeat bg-cover transform transition-transform duration-500 group-hover:scale-110" data-alt="Close up of colorful pencils and school supplies" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAiqdeJT5XlWGe6y7EJuRY1LG3lixpXKWSctMayUsvfHW2JmKi8_bVkhLJtel_LkB3Mph47uAx1lrBb3zihfcMWBycujaGma50e0t9vUiYPhPG6matBO8jV4IulhKqZ-GFwAYoeJcBWLsXtkgSTp1S7pR4RL34b3Q5THBWOcLfwNgegf2GhdUaCrWiuUN4fz3BwyyrsBVmtCnBhbCChpglq98qJxsfPbQqw7OB2xeO9i293S4ElsmUPRQ6fvbuzGFHqvqQ3sf3z2xvY");'>
+</div>
+</div>
+<div class="absolute right-4 top-4 text-primary/0 group-hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Card 2: 2º Ano -->
+<div class="group relative cursor-pointer">
+<div class="absolute inset-0 bg-primary/5 dark:bg-primary/10 rounded-2xl transform transition-transform duration-300 group-hover:scale-[1.02] group-active:scale-[0.98]"></div>
+<div class="relative flex items-center justify-between gap-4 rounded-2xl bg-white dark:bg-surface-dark p-4 shadow-soft hover:shadow-glow border border-transparent hover:border-primary/20 transition-all duration-300">
+<div class="flex flex-col gap-1.5 flex-[2_2_0px] pl-2">
+<span class="inline-flex items-center justify-center w-fit px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 mb-1">
+                                Ensino Fundamental
+                            </span>
+<h3 class="text-[#0d121b] dark:text-white text-xl font-bold leading-tight">2º Ano</h3>
+<p class="text-[#4c669a] dark:text-gray-400 text-sm font-normal">Turma B - Tarde</p>
+</div>
+<div class="w-24 h-24 shrink-0 rounded-xl overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-tr from-indigo-600/20 to-transparent z-10"></div>
+<div class="w-full h-full bg-center bg-no-repeat bg-cover transform transition-transform duration-500 group-hover:scale-110" data-alt="Open notebook with handwritten notes and diagrams" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB6ygLWCeykSGXPIT8FOGdrQ3hOjRYrdDYkty--9HyHT9lpdnbGZ2gwHN64p2PDsM0Wx_0ulo1j5EY7b6PWGQXzKL_DzQ2A6XJg19F2yfRsVMWJ8vWWyLn0ZMSIkz4e21b-u12WOteag4iwVCc3CmPHSOR3iTOaaQkvN2qA3IOVHrSPMeZw2kAu0VVQkPpcfrk1yLAg0AF9oe95JT7IDM2XTRPohuvcJzVtwhaWUratAHAnZqiKUHQfJStCidvAl8DRp0j81cqsWlQy");'>
+</div>
+</div>
+<div class="absolute right-4 top-4 text-primary/0 group-hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Ensino Médio -->
+<div class="group relative cursor-pointer">
+<div class="absolute inset-0 bg-primary/5 dark:bg-primary/10 rounded-2xl transform transition-transform duration-300 group-hover:scale-[1.02] group-active:scale-[0.98]"></div>
+<div class="relative flex items-center justify-between gap-4 rounded-2xl bg-white dark:bg-surface-dark p-4 shadow-soft hover:shadow-glow border border-transparent hover:border-primary/20 transition-all duration-300">
+<div class="flex flex-col gap-1.5 flex-[2_2_0px] pl-2">
+<span class="inline-flex items-center justify-center w-fit px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300 mb-1">
+                                Avançado
+                            </span>
+<h3 class="text-[#0d121b] dark:text-white text-xl font-bold leading-tight">Ensino Médio</h3>
+<p class="text-[#4c669a] dark:text-gray-400 text-sm font-normal">Todas as disciplinas</p>
+</div>
+<div class="w-24 h-24 shrink-0 rounded-xl overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-transparent z-10"></div>
+<div class="w-full h-full bg-center bg-no-repeat bg-cover transform transition-transform duration-500 group-hover:scale-110" data-alt="Library shelves filled with books soft focus" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBZ8t0Djg1o-sownCetX-yY3-uK4b0Wtrao_B7dPzDNa3yR_2LQ9zZ3z6FUK2jS-D1yi3Y5qInjnBh4dIBVwu6KJQkdNrfKfbXxOh7suj7LbKZEgHS746FgH3h-fXFD7zePViBFvJk-yccFrrihKE1ojrOxsJ1tLxGRHadJY0NYqLFbRMK2pdhKrZIP-QBsS-ux13vwG9TBxNYwMv6neeY65pLVO_K6SwGBgSzFzBPJ7FEG8x7AdDVm0bkotHtBquVSwo6qVDYI3S0M");'>
+</div>
+</div>
+<div class="absolute right-4 top-4 text-primary/0 group-hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

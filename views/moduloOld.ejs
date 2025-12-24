@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard de Módulos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+	<div class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-3xl">
+		<div class="flex flex-col sm:flex-row justify-between items-center mb-6">
+			<h1 class="text-2xl font-bold text-gray-800">Lista dos Módulos</h1>
+			<a href="/" class="bg-rose-500 hover:bg-rose-600 text-white px-4 py-2 rounded-xl flex items-center gap-2 mt-3 sm:mt-0">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+				  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 002 2h6a2 2 0 002-2v-1m-2-5V9a2 2 0 00-2-2h-6a2 2 0 00-2 2v1" />
+				</svg>
+				<span class="text-sm font-medium">Sair</span>
+			</a>
+		</div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-1 gap-4 mb-6">
+		<p class="text-gray-500 text-sm"></p>
+		<div class="bg-green-100 rounded-xl p-4 text-center shadow-sm">
+			<p class="text-black-500 text-xg">Professor: 
+				<span class="font-bold text-pink-600"><%= professor %></span>
+			</p>
+		  </div>
+		
+      <div class="bg-green-100 rounded-xl p-4 text-center shadow-sm">
+        <p class="text-gray-500 text-sm">Presentes</p>
+        <p id="total-presentes" class="text-2xl font-bold text-green-600"><%= qtdeTotalPresentesDia %></p>
+      </div>
+    </div>
+	<!-- Lista dos Módulos -->
+    <div class="flex flex-col gap-4">
+
+
+		<div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+			<span class="font-medium text-gray-800">1º Ano</span>
+			<div class="flex items-center gap-2">
+				<span class="text-sm text-green-600 font-medium bg-green-50 px-2 py-1 rounded-full"><%= qtdepresencas1Ano %> - Presença</span>
+				<a href="/materias/<%= id_professor %>/1" class="bg-red-500 hover:bg-red-600 text-white text-sm font-medium px-4 py-2 rounded-full transition-colors duration-200 shadow-sm">
+					Matérias
+				</a>
+			</div>
+		</div>
+      
+		<div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+			<span class="font-medium text-gray-800">2º Ano</span>
+			<div class="flex items-center gap-2">
+				<span class="text-sm text-green-600 font-medium bg-green-50 px-2 py-1 rounded-full"><%= qtdepresencas2Ano %> - Presença</span>
+				<a href="/materias/<%= id_professor %>/2" class="bg-red-500 hover:bg-red-600 text-white text-sm font-medium px-4 py-2 rounded-full transition-colors duration-200 shadow-sm">
+					Matérias
+				</a>
+			</div>
+		</div>
+	  
+	  
+		<div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+			<span class="font-medium text-gray-800">Médio</span>
+			<div class="flex items-center gap-2">
+				<span class="text-sm text-green-600 font-medium bg-green-50 px-2 py-1 rounded-full"><%= qtdepresencasMedio %> - Presença</span>
+				<a href="/materias/<%= id_professor %>/3" class="bg-red-500 hover:bg-red-600 text-white text-sm font-medium px-4 py-2 rounded-full transition-colors duration-200 shadow-sm">
+					Matérias
+				</a>
+			</div>
+		</div>
+	  
+    </div>
+    <!-- Lista de Módulos 
+    <div id="modulos" class="flex flex-col gap-3">
+      
+    </div>-->
+  </div>
+
+  <script>
+    const modulos = [
+      { nome: "1º Ano", presencas: <%= qtdepresencas1Ano %> },
+      { nome: "2º Ano", presencas: <%= qtdepresencas2Ano %> },
+      { nome: "Ensino Médio", presencas: <%= qtdepresencasMedio %> },
+    ];
+
+    const totalPresentes = document.getElementById("total-presentes");
+    const totalFaltantes = document.getElementById("total-faltantes");
+    const totalAlunos = document.getElementById("total-alunos");
+    const container = document.getElementById("modulos");
+
+    function atualizarTotais() {
+      const somaPresencas = modulos.reduce((acc, m) => acc + m.presencas, 0);
+      const total = 30; // exemplo fixo, pode vir do banco
+      totalPresentes.textContent = somaPresencas;
+      totalFaltantes.textContent = total - somaPresencas;
+      totalAlunos.textContent = total;
+    }
+
+    function renderModulos() {
+      container.innerHTML = "";
+      modulos.forEach((m) => {
+        const card = document.createElement("div");
+        card.className =
+          "flex justify-between items-center bg-white rounded-xl border p-4 shadow-sm hover:shadow-md transition";
+
+        const nome = document.createElement("span");
+        nome.textContent = m.nome;
+        nome.className = "text-gray-800 font-medium";
+
+        const ladoDireito = document.createElement("div");
+        ladoDireito.className = "flex items-center gap-3";
+
+        const presencas = document.createElement("span");
+        presencas.textContent = `${m.presencas} presenças`;
+        presencas.className = "text-emerald-600 font-semibold text-sm";
+
+        const botao = document.createElement("button");
+        botao.className =
+          "bg-rose-500 hover:bg-rose-600 text-white px-4 py-2 rounded-xl flex items-center gap-2 text-sm";
+        botao.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20l9-5-9-5-9 5 9 5zm0 0V10m0 10V10" />
+          </svg><a href="/adm/materias">
+          <span>Matérias</span>
+		  </a>
+        `;
+
+        ladoDireito.appendChild(presencas);
+        ladoDireito.appendChild(botao);
+
+        card.appendChild(nome);
+        card.appendChild(ladoDireito);
+        container.appendChild(card);
+      });
+    }
+
+    // Inicializa
+    renderModulos();
+    atualizarTotais();
+  </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Matérias</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center py-6 px-4">
+
+  <div class="bg-white shadow-lg rounded-2xl w-full max-w-2xl p-6">
+
+    <!-- Cabeçalho -->
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="text-lg sm:text-xl font-bold text-gray-800">
+        <p class="text-sm text-gray-500"><%= titulo %></p>
+      </h1>
+
+      <div class="flex items-center gap-2">
+        <button class="flex items-center gap-2 border border-pink-400 text-pink-500 px-3 py-1.5 rounded-full text-sm hover:bg-pink-50 transition"
+          onclick="modulos()">
+          <span class="material-icons text-sm">menu</span> Módulos
+        </button>
+        <button class="flex items-center gap-2 bg-pink-500 text-white px-3 py-1.5 rounded-full text-sm shadow hover:bg-pink-600 transition"
+          onclick="sair()">
+          <span class="material-icons text-sm">arrow_forward</span> Sair
+        </button>
+      </div>
+    </div>
+
+    <!-- Professor -->
+    <div class="bg-green-100 rounded-xl p-4 text-center shadow-sm mb-4">
+      <p class="text-black-500 text-xg">
+        Professor:
+        <span class="font-bold text-pink-600"><%= professor %></span>
+      </p>
+    </div>
+
+    <!-- Pesquisa -->
+    <div class="mb-6">
+      <input type="text" id="pesquisa" placeholder="Pesquisar matérias..."
+        class="w-full border rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-rose-400 focus:outline-none transition-all">
+    </div>
+
+    <!-- Lista -->
+    <div class="space-y-3">
+      <% materias.forEach(dados => { %>
+      <div class="border border-gray-200 rounded-xl p-4 aluno-item bg-white">
+
+  <!-- Nome da matéria CENTRALIZADO e MAIOR -->
+  <p class="font-bold text-xl text-center text-gray-900 nome-aluno mb-3">
+    <%= dados.descricao %>
+  </p>
+
+  <!-- Botões -->
+  <div class="flex items-center gap-2">
+
+    <button onclick="presenca(<%= dados.id_materia %>)"
+      class="flex-1 flex items-center justify-center gap-1 bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg text-sm transition">
+      <span class="material-icons text-sm">event_available</span> Presença
+    </button>
+
+    <button onclick="notas(<%= dados.id_materia %>)"
+      class="flex-1 flex items-center justify-center gap-1 bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded-lg text-sm transition">
+      <span class="material-icons text-sm">grading</span> Notas
+    </button>
+
+  </div>
+</div>
+
+      <% }) %>
+    </div>
+
+  </div>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script>
+    const pesquisa = document.getElementById("pesquisa");
+
+    function presenca(id) {
+      window.location.href = "/alunos/<%= id_professor %>/" + id + "/<%= id_modulo %>";
+    }
+
+    function notas(id) {
+      window.location.href = "/notas/<%= id_professor %>/" + id + "/<%= id_modulo %>";
+    }
+
+    pesquisa.addEventListener("input", () => {
+      const termo = pesquisa.value.toLowerCase();
+      const materias = document.querySelectorAll(".aluno-item");
+
+      materias.forEach(item => {
+        const nome = item.querySelector(".nome-aluno").textContent.toLowerCase();
+        item.style.display = nome.includes(termo) ? "block" : "none";
+      });
+    });
+
+    function modulos() { window.location.href = "/modulo/<%= id_professor %>"; }
+    function sair() { window.location.href = "/"; }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Educational App Home Screen</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#5B4DFF", 
+              "primary-dark": "#4639cc",
+              "background-light": "#F8F9FE",
+              "background-dark": "#121212",
+              "card-light": "#FFFFFF",
+              "card-dark": "#1E1E1E",
+              "text-main-light": "#1F2937",
+              "text-main-dark": "#F3F4F6",
+              "text-sub-light": "#6B7280",
+              "text-sub-dark": "#9CA3AF",
+            },
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+              sans: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              "xl": "1.25rem",
+              "2xl": "1.5rem",
+              "3xl": "2rem",
+            },
+            boxShadow: {
+              'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+            }
+          },
+        },
+      };
+    </script>
+<style>.hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark transition-colors duration-300 min-h-screen relative pb-6">
+<div class="h-10 w-full"></div>
+<header class="px-6 pt-2 pb-4 flex justify-between items-center">
+<div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border-2 border-primary">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3GHW-R1kqc1LOnEpkMsYrWIk0ZtyPB7uZFB0ORFmIbVn5JUldFZeykB0etFh9J6VaXhOYgDMVNMictWA1jh_JIQKPEUjKw84BBaJrxvgizGAcyW51k9bxD6dD5BqS1jO6AehzergYHdrsM2momh5L0rX4RAHO12dRuTSaeOrqZxbwnzY3mHb8CP_1Dx5E-pzAv6swI5BxlR5ufvfImHKRr1QBxIpvUcjSpVSS6guapU0jMXdjmu4hrSwViAEai3kRk3AEgSi_EQM"/>
+</div>
+</div>
+</header>
+<div class="px-6 mb-6">
+<h1 class="text-2xl font-bold text-primary dark:text-white leading-tight">
+            Olá, <%= nome %>! <br/>
+<span class="text-text-main-light dark:text-gray-400 font-normal text-lg">Abaixo Módulos Disponíveis</span>
+</h1>
+</div>
+
+<div class="px-6">
+<h2 class="text-lg font-bold text-primary dark:text-white mb-4">Selecione o Módulo</h2>
+<div class="flex flex-col gap-5 mb-6">
+<a href="/mat">
+<div class="relative h-32 rounded-3xl overflow-hidden shadow-md bg-white dark:bg-card-dark flex items-center p-4 group cursor-pointer border border-gray-100 dark:border-gray-800 hover:shadow-lg transition-shadow">
+<div class="w-20 h-20 rounded-2xl bg-blue-50 dark:bg-blue-900/20 flex-shrink-0 flex items-center justify-center text-blue-600 mr-4">
+<span class="material-icons-round text-3xl">menu_book</span>
+</div>
+<div class="flex-1">
+	<a href="/mat/<%= cpf %>/<%= id_professor %>">
+		<div class="flex justify-between items-start mb-1">
+			<h3 class="text-text-main-light dark:text-white font-bold text-lg">1º Ano</h3>
+			<span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">4 Active</span>
+		</div>
+	</a>
+
+<p class="text-xs text-text-sub-light dark:text-text-sub-dark mb-2">Continue learning Math, History and more.</p>
+<div class="flex items-center text-primary text-xs font-semibold">
+                Go to Courses <span class="material-icons-round text-sm ml-1">arrow_forward</span>
+</div>
+</div>
+</div>
+</a>
+
+<div class="relative h-32 rounded-3xl overflow-hidden shadow-md bg-white dark:bg-card-dark flex items-center p-4 group cursor-pointer border border-gray-100 dark:border-gray-800 hover:shadow-lg transition-shadow">
+<div class="w-20 h-20 rounded-2xl bg-blue-50 dark:bg-blue-900/20 flex-shrink-0 flex items-center justify-center text-blue-600 mr-4">
+<span class="material-icons-round text-3xl">menu_book</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-text-main-light dark:text-white font-bold text-lg">2º Ano</h3>
+<span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">4 Active</span>
+</div>
+<p class="text-xs text-text-sub-light dark:text-text-sub-dark mb-2">Continue learning Math, History and more.</p>
+<div class="flex items-center text-primary text-xs font-semibold">
+                Go to Courses <span class="material-icons-round text-sm ml-1">arrow_forward</span>
+</div>
+</div>
+</div>
+
+
+<div class="relative h-32 rounded-3xl overflow-hidden shadow-md bg-white dark:bg-card-dark flex items-center p-4 group cursor-pointer border border-gray-100 dark:border-gray-800 hover:shadow-lg transition-shadow">
+<div class="w-20 h-20 rounded-2xl bg-blue-50 dark:bg-blue-900/20 flex-shrink-0 flex items-center justify-center text-blue-600 mr-4">
+<span class="material-icons-round text-3xl">menu_book</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-text-main-light dark:text-white font-bold text-lg">Médio</h3>
+<span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">4 Active</span>
+</div>
+<p class="text-xs text-text-sub-light dark:text-text-sub-dark mb-2">Continue learning Math, History and more.</p>
+<div class="flex items-center text-primary text-xs font-semibold">
+                Go to Courses <span class="material-icons-round text-sm ml-1">arrow_forward</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+</body></html>

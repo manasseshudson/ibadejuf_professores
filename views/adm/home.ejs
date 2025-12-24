@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Adminator Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        display: ['Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: "#2196F3", // Blue from the logo/active state
+                        "background-light": "#f1f2f7", // Light grey background
+                        "background-dark": "#111827", // Dark mode background
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1f2937",
+                        "text-main-light": "#333333",
+                        "text-main-dark": "#f3f4f6",
+                        "text-muted-light": "#888888",
+                        "text-muted-dark": "#9ca3af",
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>.scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }.chart-75 { background: conic-gradient(#ef4444 0% 75%, #f3f4f6 75% 100%); }
+        .chart-50 { background: conic-gradient(#3b82f6 0% 50%, #f3f4f6 50% 100%); }
+        .chart-90 { background: conic-gradient(#f59e0b 0% 90%, #f3f4f6 90% 100%); }.dark .chart-75 { background: conic-gradient(#ef4444 0% 75%, #374151 75% 100%); }
+        .dark .chart-50 { background: conic-gradient(#3b82f6 0% 50%, #374151 50% 100%); }
+        .dark .chart-90 { background: conic-gradient(#f59e0b 0% 90%, #374151 90% 100%); }
+    </style>
+</head>
+<body class="font-sans bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark transition-colors duration-200">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 bg-surface-light dark:bg-surface-dark border-r border-gray-200 dark:border-gray-700 flex flex-col transition-colors duration-200 hidden lg:flex z-20">
+<div class="h-16 flex items-center px-6 border-b border-gray-200 dark:border-gray-700">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white font-bold text-lg">A</div>
+<span class="text-xl font-medium tracking-tight">Adminator</span>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto py-4 scrollbar-hide">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center px-6 py-3 bg-blue-50 dark:bg-blue-900/20 text-primary border-r-4 border-primary" href="#">
+<span class="material-icons text-xl mr-3">home</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-6 py-3 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-icons text-xl mr-3">email</span>
+<span class="text-sm font-medium">Email</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-6 py-3 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-icons text-xl mr-3">send</span>
+<span class="text-sm font-medium">Compose</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-6 py-3 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-icons text-xl mr-3">calendar_today</span>
+<span class="text-sm font-medium">Calendar</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-6 py-3 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-icons text-xl mr-3">chat_bubble_outline</span>
+<span class="text-sm font-medium">Chat</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-6 py-3 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-icons text-xl mr-3">bar_chart</span>
+<span class="text-sm font-medium">Charts</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-6 py-3 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-icons text-xl mr-3">edit</span>
+<span class="text-sm font-medium">Forms</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-6 py-3 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-icons text-xl mr-3">palette</span>
+<span class="text-sm font-medium">UI Elements</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between px-6 py-3 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" href="#">
+<div class="flex items-center">
+<span class="material-icons text-xl mr-3">format_list_bulleted</span>
+<span class="text-sm font-medium">Tables</span>
+</div>
+<span class="material-icons text-sm text-gray-400 group-hover:text-primary">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between px-6 py-3 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" href="#">
+<div class="flex items-center">
+<span class="material-icons text-xl mr-3">map</span>
+<span class="text-sm font-medium">Maps</span>
+</div>
+<span class="material-icons text-sm text-gray-400 group-hover:text-primary">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between px-6 py-3 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" href="#">
+<div class="flex items-center">
+<span class="material-icons text-xl mr-3">description</span>
+<span class="text-sm font-medium">Pages</span>
+</div>
+<span class="material-icons text-sm text-gray-400 group-hover:text-primary">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between px-6 py-3 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" href="#">
+<div class="flex items-center">
+<span class="material-icons text-xl mr-3">toc</span>
+<span class="text-sm font-medium">Multiple Levels</span>
+</div>
+<span class="material-icons text-sm text-gray-400 group-hover:text-primary">chevron_right</span>
+</a>
+</li>
+</ul>
+</nav>
+</aside>
+<div class="flex-1 flex flex-col h-full overflow-hidden relative">
+<header class="h-16 bg-surface-light dark:bg-surface-dark shadow-sm z-10 flex items-center justify-between px-6 transition-colors duration-200">
+<div class="flex items-center">
+<button class="lg:hidden mr-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+<span class="material-icons">menu</span>
+</button>
+</div>
+<div class="flex items-center gap-4 lg:gap-6">
+<div class="flex items-center gap-3">
+<button class="relative text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+<span class="material-icons">notifications_none</span>
+<span class="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 bg-red-500 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">3</span>
+</button>
+<button class="relative text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+<span class="material-icons">mail_outline</span>
+<span class="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 bg-red-500 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">5</span>
+</button>
+</div>
+<div class="flex items-center gap-3 border-l pl-6 border-gray-200 dark:border-gray-700">
+<img alt="User Avatar" class="h-8 w-8 rounded-full object-cover ring-2 ring-gray-100 dark:ring-gray-600" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcjtJM3qBxWqmfA4kb_KBoM7E_8Uu1g_sggrHzvYDMCtFLJjc059g0mKkwYqUkhm_CFhbiBTILqm0jsBzoi5iHlBVRWwZN5tO_wnP0zbwc2dCxJiZ1QxDY10qpBAA3O9DNw7HrSYf-858LTyBiA0BDTY0YtoUEd6OrfbY22Uu-ZA2yBpKwN3E0IyIU_QsvRi30BrWjkKhfpW_loUv8OFK-cU-FCL9xIPH40512VRB6clgYUJI_gEKhV_RNmWToEAC9yDjzCFkPuak"/>
+<span class="hidden md:block text-sm font-medium text-gray-700 dark:text-gray-200">John Doe</span>
+</div>
+<div class="flex items-center text-xs font-semibold text-gray-500 dark:text-gray-400 gap-2">
+<span>LIGHT</span>
+<button class="relative inline-flex items-center h-5 w-10 rounded-full bg-gray-300 dark:bg-gray-600 focus:outline-none transition-colors duration-200" id="theme-toggle">
+<span class="sr-only">Toggle theme</span>
+<span class="translate-x-1 dark:translate-x-6 inline-block w-3 h-3 transform bg-white rounded-full transition-transform duration-200"></span>
+</button>
+<span>DARK</span>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto overflow-x-hidden p-6 lg:p-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-gray-500 dark:text-gray-400 text-sm font-medium mb-1">Total Visits</h3>
+<div class="flex items-end gap-2">
+<div class="flex gap-0.5 items-end h-8">
+<div class="w-1 bg-green-200 dark:bg-green-900 h-3 rounded-t-sm"></div>
+<div class="w-1 bg-green-300 dark:bg-green-800 h-5 rounded-t-sm"></div>
+<div class="w-1 bg-green-400 dark:bg-green-700 h-4 rounded-t-sm"></div>
+<div class="w-1 bg-green-500 dark:bg-green-600 h-7 rounded-t-sm"></div>
+<div class="w-1 bg-green-400 dark:bg-green-700 h-5 rounded-t-sm"></div>
+<div class="w-1 bg-green-300 dark:bg-green-800 h-2 rounded-t-sm"></div>
+</div>
+</div>
+</div>
+<span class="bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400 text-xs font-bold px-2 py-1 rounded">+10%</span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-gray-600 dark:text-gray-300 text-base font-medium">Total Page Views</h3>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex gap-1 items-end h-10">
+<div class="w-1.5 bg-purple-300 dark:bg-purple-900 h-4 rounded-t-sm"></div>
+<div class="w-1.5 bg-purple-400 dark:bg-purple-800 h-6 rounded-t-sm"></div>
+<div class="w-1.5 bg-purple-500 dark:bg-purple-700 h-3 rounded-t-sm"></div>
+<div class="w-1.5 bg-purple-500 dark:bg-purple-600 h-8 rounded-t-sm"></div>
+<div class="w-1.5 bg-purple-400 dark:bg-purple-700 h-5 rounded-t-sm"></div>
+<div class="w-1.5 bg-purple-300 dark:bg-purple-800 h-2 rounded-t-sm"></div>
+<div class="w-1.5 bg-purple-400 dark:bg-purple-700 h-4 rounded-t-sm"></div>
+</div>
+<span class="bg-red-100 dark:bg-red-900/40 text-red-500 dark:text-red-400 text-xs font-bold px-3 py-1 rounded-full">-7%</span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-gray-600 dark:text-gray-300 text-base font-medium">Unique Visitor</h3>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex gap-1 items-end h-10">
+<div class="w-1.5 bg-blue-300 dark:bg-blue-900 h-3 rounded-t-sm"></div>
+<div class="w-1.5 bg-blue-400 dark:bg-blue-800 h-5 rounded-t-sm"></div>
+<div class="w-1.5 bg-blue-500 dark:bg-blue-700 h-4 rounded-t-sm"></div>
+<div class="w-1.5 bg-blue-500 dark:bg-blue-600 h-7 rounded-t-sm"></div>
+<div class="w-1.5 bg-blue-400 dark:bg-blue-700 h-5 rounded-t-sm"></div>
+<div class="w-1.5 bg-blue-300 dark:bg-blue-800 h-6 rounded-t-sm"></div>
+<div class="w-1.5 bg-blue-500 dark:bg-blue-600 h-4 rounded-t-sm"></div>
+</div>
+<span class="bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 text-xs font-bold px-3 py-1 rounded-full">~12%</span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-gray-600 dark:text-gray-300 text-base font-medium">Bounce Rate</h3>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex gap-1 items-end h-10">
+<div class="w-1.5 bg-red-300 dark:bg-red-900 h-3 rounded-t-sm"></div>
+<div class="w-1.5 bg-red-400 dark:bg-red-800 h-4 rounded-t-sm"></div>
+<div class="w-1.5 bg-red-500 dark:bg-red-700 h-5 rounded-t-sm"></div>
+<div class="w-1.5 bg-red-500 dark:bg-red-600 h-3 rounded-t-sm"></div>
+<div class="w-1.5 bg-red-400 dark:bg-red-700 h-6 rounded-t-sm"></div>
+<div class="w-1.5 bg-red-300 dark:bg-red-800 h-2 rounded-t-sm"></div>
+<div class="w-1.5 bg-red-400 dark:bg-red-700 h-4 rounded-t-sm"></div>
+</div>
+<span class="bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 text-xs font-bold px-3 py-1 rounded-full">33%</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 bg-surface-light dark:bg-surface-dark rounded shadow-sm p-6 relative min-h-[500px]">
+<div class="absolute inset-0 p-6 flex items-center justify-center opacity-80 dark:opacity-60">
+<svg class="w-full h-full text-gray-200 dark:text-gray-700 fill-current" viewBox="0 0 1000 500">
+<path d="M168,142 C165,145 160,145 156,145 C146,145 140,140 142,130 C143,125 148,122 153,122 C162,122 168,128 168,142 Z M821,326 C822,328 820,332 818,333 C815,335 812,333 811,330 C810,327 812,324 815,324 C817,324 820,325 821,326 Z M750,380 L748,382 C748,382 748,383 749,383 C750,383 751,382 750,380 Z M645,214 C645,214 646,215 645,215 C644,215 644,214 645,214 Z M281,135 C281,135 282,136 281,136 C280,136 280,135 281,135 Z M188,103 C188,103 189,104 188,104 C187,104 187,103 188,103 Z M668,148 C675,148 680,154 679,161 C678,166 673,170 668,170 C660,170 655,163 656,155 C657,150 662,147 668,148 Z M244,185 C244,185 245,186 244,186 C243,186 243,185 244,185 Z M785,365 C788,368 786,373 783,374 C780,375 777,372 778,369 C778,367 780,365 782,364 C783,364 784,364 785,365 Z M428,129 C428,129 429,130 428,130 C427,130 427,129 428,129 Z M625,185 C625,185 626,186 625,186 C624,186 624,185 625,185 Z M692,310 C692,310 693,311 692,311 C691,311 691,310 692,310 Z M641,202 C641,202 642,203 641,203 C640,203 640,202 641,202 Z M615,168 C615,168 616,169 615,169 C614,169 614,168 615,168 Z M628,155 C628,155 629,156 628,156 C627,156 627,155 628,155 Z M585,148 C585,148 586,149 585,149 C584,149 584,148 585,148 Z M568,135 C568,135 569,136 568,136 C567,136 567,135 568,135 Z M262,112 C262,112 263,113 262,113 C261,113 261,112 262,112 Z M235,95 C235,95 236,96 235,96 C234,96 234,95 235,95 Z M850,300 C865,310 860,340 840,350 L800,350 C790,340 780,320 800,300 C810,290 840,290 850,300 Z M300,200 C320,200 340,220 320,240 C310,250 290,250 280,240 C270,230 270,210 280,200 C285,195 295,195 300,200 Z M500,280 C510,290 500,310 490,310 C480,310 470,300 480,290 C485,285 495,285 500,280 Z" stroke="currentColor" stroke-width="2"></path>
+<path class="text-gray-300 dark:text-gray-600 fill-current hover:text-blue-200 transition-colors" d="M150,150 L250,150 L240,220 L160,200 Z"></path>
+<path class="text-gray-300 dark:text-gray-600 fill-current" d="M280,280 L350,280 L340,380 L300,360 Z"></path>
+<path class="text-gray-300 dark:text-gray-600 fill-current" d="M450,220 L550,220 L530,350 L470,330 Z"></path>
+<path class="text-blue-500 dark:text-blue-600 fill-current opacity-90" d="M750,320 L850,320 L840,380 L760,370 Z"></path>
+<path class="text-blue-500 dark:text-blue-600 fill-current opacity-90" d="M620,240 L650,240 L645,270 L625,265 Z"></path>
+<path class="text-blue-500 dark:text-blue-600 fill-current opacity-90" d="M180,180 L200,180 L200,200 L180,210 Z"></path>
+<path class="text-blue-500 dark:text-blue-600 fill-current opacity-90" d="M550,240 L570,240 L565,260 L555,255 Z"></path>
+</svg>
+</div>
+<div class="absolute top-[38%] left-[19%]">
+<div class="relative group">
+<div class="w-4 h-4 bg-white dark:bg-gray-800 rounded-full border-2 border-gray-400 flex items-center justify-center"></div>
+<div class="w-2 h-2 bg-blue-500 rounded-full absolute top-1 left-1"></div>
+</div>
+</div>
+<div class="absolute top-[32%] left-[34%]">
+<div class="relative group">
+<div class="w-4 h-4 bg-white dark:bg-gray-800 rounded-full border-2 border-gray-400 flex items-center justify-center"></div>
+<div class="w-2 h-2 bg-blue-500 rounded-full absolute top-1 left-1"></div>
+</div>
+</div>
+<div class="absolute top-[48%] left-[45%]">
+<div class="relative group">
+<div class="w-4 h-4 bg-white dark:bg-gray-800 rounded-full border-2 border-gray-400 flex items-center justify-center"></div>
+<div class="w-2 h-2 bg-blue-500 rounded-full absolute top-1 left-1"></div>
+</div>
+</div>
+<div class="absolute top-[50%] left-[49%]">
+<div class="relative group">
+<div class="w-4 h-4 bg-white dark:bg-gray-800 rounded-full border-2 border-gray-400 flex items-center justify-center shadow-lg"></div>
+<div class="w-2 h-2 bg-blue-500 rounded-full absolute top-1 left-1"></div>
+</div>
+</div>
+<div class="absolute top-[75%] left-[62%]">
+<div class="relative group">
+<div class="w-4 h-4 bg-white dark:bg-gray-800 rounded-full border-2 border-gray-400 flex items-center justify-center shadow-lg"></div>
+<div class="w-2 h-2 bg-blue-500 rounded-full absolute top-1 left-1"></div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-8">
+<div class="bg-surface-light dark:bg-surface-dark rounded shadow-sm p-6 h-full flex flex-col justify-between">
+<div class="mb-6">
+<div class="flex justify-between items-end mb-2">
+<div>
+<h4 class="text-xl font-light text-gray-800 dark:text-gray-100">100k</h4>
+<span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Visitors From USA</span>
+</div>
+<span class="text-xs text-gray-500 dark:text-gray-400">50%</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-purple-600 h-1.5 rounded-full" style="width: 50%"></div>
+</div>
+</div>
+<div class="mb-6">
+<div class="flex justify-between items-end mb-2">
+<div>
+<h4 class="text-xl font-light text-gray-800 dark:text-gray-100">1M</h4>
+<span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Visitors From Europe</span>
+</div>
+<span class="text-xs text-gray-500 dark:text-gray-400">80%</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-green-500 h-1.5 rounded-full" style="width: 80%"></div>
+</div>
+</div>
+<div class="mb-6">
+<div class="flex justify-between items-end mb-2">
+<div>
+<h4 class="text-xl font-light text-gray-800 dark:text-gray-100">450k</h4>
+<span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Visitors From Australia</span>
+</div>
+<span class="text-xs text-gray-500 dark:text-gray-400">40%</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-blue-500 h-1.5 rounded-full" style="width: 40%"></div>
+</div>
+</div>
+<div class="mb-6">
+<div class="flex justify-between items-end mb-2">
+<div>
+<h4 class="text-xl font-light text-gray-800 dark:text-gray-100">1B</h4>
+<span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Visitors From India</span>
+</div>
+<span class="text-xs text-gray-500 dark:text-gray-400">90%</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-gray-500 dark:bg-gray-400 h-1.5 rounded-full" style="width: 90%"></div>
+</div>
+</div>
+<hr class="border-gray-100 dark:border-gray-700 my-4"/>
+<div class="grid grid-cols-3 gap-2 text-center pt-2">
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full chart-75 relative flex items-center justify-center mb-2">
+<div class="w-12 h-12 bg-white dark:bg-surface-dark rounded-full flex items-center justify-center">
+<span class="text-xs font-bold text-gray-700 dark:text-gray-200">75%</span>
+</div>
+</div>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-medium">New Users</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full chart-50 relative flex items-center justify-center mb-2">
+<div class="w-12 h-12 bg-white dark:bg-surface-dark rounded-full flex items-center justify-center">
+<span class="text-xs font-bold text-gray-700 dark:text-gray-200">50%</span>
+</div>
+</div>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-medium">New Purchases</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full chart-90 relative flex items-center justify-center mb-2">
+<div class="w-12 h-12 bg-white dark:bg-surface-dark rounded-full flex items-center justify-center">
+<span class="text-xs font-bold text-gray-700 dark:text-gray-200">90%</span>
+</div>
+</div>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Bounce Rate</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        themeToggleBtn.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            // Optional: Save preference
+            // if (html.classList.contains('dark')) {
+            //     localStorage.setItem('theme', 'dark');
+            // } else {
+            //     localStorage.setItem('theme', 'light');
+            // }
+        });
+    </script>
+
+</body></html>

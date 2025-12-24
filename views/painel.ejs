@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Mobile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #fff;
+        }
+
+        .header-box {
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            background: #1e3a8a;
+            color: white;
+            padding: 25px;
+        }
+
+        .category-box {
+            width: 100%;
+            height: 80px;
+            border-radius: 20px;
+        }
+
+        .thumb-box {
+            width: 90px;
+            height: 60px;
+            background: #d1d5db;
+            border-radius: 15px;
+        }
+
+        .progress {
+            height: 8px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body class="d-flex justify-content-center p-3">
+
+    <!--<div class="bg-white rounded-4 shadow-lg w-100" style="max-width: 420px; overflow: hidden;">-->
+	<div class="bg-white w-100" style="max-width: 420px; overflow: hidden;">
+
+        <!-- HEADER -->
+        <div class="header-box">
+            <div class="d-flex justify-content-between">
+                <div class="bg-white bg-opacity-25 rounded-circle p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+                        <path d="M14 14s-1-4-6-4-6 4-6 4 1 1 6 1 6-1 6-1z"/>
+                    </svg>
+                </div>
+
+                <div class="position-relative">
+                    
+                </div>
+            </div>
+
+            <p class="mt-3 small opacity-75">
+                Olá Professor aqui você pode desiginar notas  e presenças de seus alunos.
+            </p>
+        </div>
+
+        <!-- CATEGORIES -->
+        <div class="p-4">
+
+            <h5 class="fw-semibold mb-3">Categories</h5>
+
+            <div class="row g-2 mb-6">
+
+                <div class="col-6">
+                    <div class="category-box bg-warning d-flex flex-column justify-content-center align-items-center text-center text-white">
+						<i class="bi bi-phone-fill fs-2"></i>
+						<span class="fw-semibold mt-1">Presenças</span>
+					</div>					
+                </div>
+
+                <div class="col-6">
+                    <div class="category-box d-flex flex-column justify-content-center align-items-center text-center text-white" style="background:#9333ea;">
+    <i class="bi bi-hand-index-fill fs-2"></i>
+    <span class="fw-semibold mt-1">Lançar Notas</span>
+</div>
+                </div>
+
+            </div>
+
+            <!-- TECHNOLOGY -->
+            <h5 class="fw-semibold mb-3" style="margin-top: 15px;">Ultimas Notícias</h5>
+
+            <!-- Item -->
+            <div class="d-flex gap-3 mb-2">
+                <div class="thumb-box"></div>
+                <div class="flex-grow-1">
+                    <p class="text-muted small mb-2">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh.
+                    </p>
+
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</body>
+</html>

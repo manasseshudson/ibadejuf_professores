@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student List</title>
+<!-- Google Fonts: Lexend -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2632",
+                        "text-main": "#111418",
+                        "text-secondary": "#617589",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-text-main dark:text-white overflow-hidden">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<div class="flex items-center bg-surface-light dark:bg-surface-dark px-4 py-3 justify-between sticky top-0 z-10 border-b border-gray-200 dark:border-gray-800">
+<h2 class="text-text-main dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] flex-1">Alunos</h2>
+<div class="flex items-center justify-end">
+</div>
+</div>
+<!-- Search Bar -->
+<div class="bg-surface-light dark:bg-surface-dark px-4 pb-4 pt-2 sticky top-[60px] z-10 shadow-sm">
+<label class="flex flex-col h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-[#f0f2f4] dark:bg-gray-800 transition-colors">
+<div class="text-text-secondary dark:text-gray-400 flex items-center justify-center pl-4 pr-2">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-text-main dark:text-white focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-text-secondary dark:placeholder:text-gray-500 px-2 text-base font-normal leading-normal" placeholder="Search by name or ID" value=""/>
+</div>
+</label>
+</div>
+<!-- Main Content: Scrollable List -->
+<div class="flex-1 overflow-y-auto pb-24 px-4 pt-4 space-y-3">
+<!-- List Item 1 -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-3 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-all cursor-pointer group">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 shrink-0 border border-gray-100 dark:border-gray-700" data-alt="Portrait of Alex Johnson" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0SS4rVhfPK1dmQ4EY17vWw3kiBQFSEjmT1XyxGN23dUyvUYLeBWEbP6YMt6qXxm87shWETPkwkwwDAiU6rF6x5QYrCp-qmD0deSUARcUq5v6JS7P6PJIzkIzzG59p38CNRFe9vZ_kySRGIQbCRyxyJGbFe4D2wPct_o80b3mkQS_2OztJATzmXhx-YJchT6344QicORtdPOUhTggoRGzblRDxf3_SbVnTmkpJ6aUFy6xRO0V7J6-dOiMlLxp98zfGKKajRUFud2I");'></div>
+<div class="flex flex-col flex-1 min-w-0">
+<p class="text-text-main dark:text-white text-base font-medium leading-normal truncate group-hover:text-primary transition-colors">Alex Johnson</p>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal truncate">ID: 2024001</p>
+</div>
+<div class="shrink-0 text-primary/70 group-hover:text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-3 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-all cursor-pointer group">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 shrink-0 border border-gray-100 dark:border-gray-700" data-alt="Portrait of Maria Rodriguez" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDYK-tW_ZhOpUo5M4Zgeg3UjAEJOqnzxLIBjGki0DqN9Kwc4P_Gw6noJkzBZF_wME8XlUG7UMSl4ORjOmNq3A1hdCnJ6-9JLzuW4IKcrqLtYjaKhBufWBCgoMhnNJN799t5MfJVZEta-1FqqOMcOtpfPUIe7Y0CvIgglKqmAUkEIluZq7jcDSUL63Sq2KtLFIOQc6H2syTp-7Q8MbhnzsBCA64HkT2tL7X2NfTs5RlqXJaWTpDVMdQWwCOGCqog_Uv_MfypvvLKqD4");'></div>
+<div class="flex flex-col flex-1 min-w-0">
+<p class="text-text-main dark:text-white text-base font-medium leading-normal truncate group-hover:text-primary transition-colors">Maria Rodriguez</p>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal truncate">ID: 2024045</p>
+</div>
+<div class="shrink-0 text-primary/70 group-hover:text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-3 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-all cursor-pointer group">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 shrink-0 border border-gray-100 dark:border-gray-700" data-alt="Portrait of Sam Smith" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBAafBrVUNy4YMktnbH3cMt14_OqzZ-PX_N1Fs7Vcfewf5xlDJcxtqf8OCCCAuzniRZiLQDmYtqGw5KQVmWRuHL6_LRf7v4oBGcIenMgbaH55yAxfhFl7M_cNW09GYPkpuaVu63J3wfTzt8Wu0Z1a9HbM2QT5gzk7_mxR1z9Zy_jyGhtbneIL1Py0nS68sNRR7Zr2S4s635wftWS2DehLuw4FOpTfBEzd7JmfqTRlAm2GY_Q22C0U5Lz4L8FwPczRVWl7u4YTDhbLo");'></div>
+<div class="flex flex-col flex-1 min-w-0">
+<p class="text-text-main dark:text-white text-base font-medium leading-normal truncate group-hover:text-primary transition-colors">Sam Smith</p>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal truncate">ID: 2024089</p>
+</div>
+<div class="shrink-0 text-primary/70 group-hover:text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- List Item 4 -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-3 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-all cursor-pointer group">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 shrink-0 border border-gray-100 dark:border-gray-700" data-alt="Portrait of Taylor Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAgUJ80x7L87vRUHmw12o7R5qCqW3wHgfk-pOnfhUYFG0OjgNiwd5nBAujKW8jXrqc88H6wj14i_mpx5JsiymJXUJX3WYIvGPFhbu3wZPIZiEJrYNhPssPSjESuMr5yLgmnLeqH9-snjTl7EB2aV8rKfRyUzRaJokcAzbBBchRMirMW_OfqrtKNc_Wfr0gvOBKQ8fHA_GgY5tXxulaJKP9h3rRLomeqQ9i2khpLSfHScI2gUmWdvfiC_-tkWl8_IRVej_hIUqLZJyE");'></div>
+<div class="flex flex-col flex-1 min-w-0">
+<p class="text-text-main dark:text-white text-base font-medium leading-normal truncate group-hover:text-primary transition-colors">Taylor Doe</p>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal truncate">ID: 2024102</p>
+</div>
+<div class="shrink-0 text-primary/70 group-hover:text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- List Item 5 -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-3 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-all cursor-pointer group">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 shrink-0 border border-gray-100 dark:border-gray-700" data-alt="Portrait of Jordan Lee" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDeqwurEUI6HZNuhNpBPM3NKR6ShnrV21PV9Wfi7ICwCmxukdnHnubezaCOtD5IPJMdPvTP-6UR85qG5QLJSM3FDSzn1TY0ZcDzCQK7Zqygb-9xUMeI8I-SLBnJyBC5I-W2a7mCPhIhuM3fJ42dwO2Yk8Pr04JdD8JX_kybE8RasGkLwKs5SZhS9vDgkJB801IF_XzHh1Rx-QoBOo6HsbTGfxuqAbqIP2gEzBWsdUTa4f2HutzQfPGPuKFYrvn_VQncK2ICVcPJUwc");'></div>
+<div class="flex flex-col flex-1 min-w-0">
+<p class="text-text-main dark:text-white text-base font-medium leading-normal truncate group-hover:text-primary transition-colors">Jordan Lee</p>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal truncate">ID: 2024156</p>
+</div>
+<div class="shrink-0 text-primary/70 group-hover:text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- List Item 6 -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-3 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-all cursor-pointer group">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 shrink-0 border border-gray-100 dark:border-gray-700" data-alt="Portrait of Casey West" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNFUiZi6_VL6zjLnYLVIwp_VCvORhZZamHOTFh4jRfND5C9dCX_5mQ82FVo-tIDncQRXSoqL9T-xAw26rVst-GEjbLwKX5RQMBjxvoIkuBV2GCMKMZSL-ioQHibWB6ZrbZeSvqa6TRqOOZkHbF2gpr4rjmnNcWGLG01Iafg16qQh3nTTWdWvgWpfnKQxqYs9BK_vDO5qXc1B3HQw62gX-VeK56A3G7IIFa44Ws6bGCWavVnChtuOvhtRjuhLin0Wk5TiwYl4Ad8UA");'></div>
+<div class="flex flex-col flex-1 min-w-0">
+<p class="text-text-main dark:text-white text-base font-medium leading-normal truncate group-hover:text-primary transition-colors">Casey West</p>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal truncate">ID: 2024210</p>
+</div>
+<div class="shrink-0 text-primary/70 group-hover:text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- List Item 7 -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-3 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-all cursor-pointer group">
+<div class="flex items-center justify-center bg-primary/20 text-primary rounded-full h-12 w-12 shrink-0 font-bold text-lg">
+                    LW
+                </div>
+<div class="flex flex-col flex-1 min-w-0">
+<p class="text-text-main dark:text-white text-base font-medium leading-normal truncate group-hover:text-primary transition-colors">Liam Wilson</p>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal truncate">ID: 2024225</p>
+</div>
+<div class="shrink-0 text-primary/70 group-hover:text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+
+</div>
+</body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>School Login Screen</title>
+<!-- Google Fonts: Spline Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f9f506",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#23220f",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased selection:bg-primary selection:text-black">
+<div class="relative flex min-h-screen w-full flex-col justify-center overflow-hidden px-4 py-8 sm:px-6 lg:px-8">
+<!-- Decorative Background Element -->
+<div class="absolute top-[-10%] right-[-10%] w-64 h-64 rounded-full bg-primary/20 blur-3xl -z-10 dark:bg-primary/10"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-48 h-48 rounded-full bg-primary/30 blur-3xl -z-10 dark:bg-primary/10"></div>
+<div class="w-full max-w-md mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col items-center gap-6 mb-8 text-center">
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-xl shadow-lg ring-4 ring-white dark:ring-white/10" data-alt="Minimalist abstract school icon or mascot logo in yellow and white" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA8FjSyZbEtI5sXiSp1z7WxL9_D3tzl-nq8J0J20GexDl5w7jFfhBgXHEx9PxIU-_H4yOL42XFEF41Vi9arKBKZN19UrSajmQqVdonttggTq83Iz1LS-gbpmn9ITVPSwuhlH2D70EopGlOYgcKdddsiBU6movZ3_Zl3-ag_vDcCJpsYcqho3ZM6VSq9OC1AfESkGMp6gdbMdOXUxr4SnqrIeRox7j-DkP737GJZ59CraBVWnTkXOWAoFNp2_0DdP5mmezfw67e5Ox9x");'>
+</div>
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+                        IBADEJUF
+                    </h1>
+<p class="text-base font-normal text-slate-500 dark:text-slate-400">
+                        Bem-vindo de volta! 
+                    </p>
+</div>
+</div>
+<!-- Login Form -->
+<form class="flex flex-col gap-5">
+<!-- Email/User Field -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-900 dark:text-slate-200 ml-1">
+                        E-mail ou Matrícula
+                    </label>
+<div class="relative flex items-center">
+<span class="absolute left-4 text-slate-400 dark:text-slate-500 material-symbols-outlined">person</span>
+<input class="form-input w-full h-14 pl-12 pr-4 rounded-xl border-0 bg-white dark:bg-white/5 ring-1 ring-inset ring-slate-200 dark:ring-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary focus:bg-white dark:focus:bg-white/10 transition-all shadow-sm" placeholder="ex: 2023001 ou aluno@escola.com" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center ml-1">
+<label class="text-sm font-medium text-slate-900 dark:text-slate-200">
+                            Senha
+                        </label>
+<a class="text-sm font-medium text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-primary transition-colors" href="#">
+                            Esqueceu a senha?
+                        </a>
+</div>
+<div class="relative flex items-center">
+<span class="absolute left-4 text-slate-400 dark:text-slate-500 material-symbols-outlined">lock</span>
+<input class="form-input w-full h-14 pl-12 pr-12 rounded-xl border-0 bg-white dark:bg-white/5 ring-1 ring-inset ring-slate-200 dark:ring-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary focus:bg-white dark:focus:bg-white/10 transition-all shadow-sm" placeholder="Sua senha secreta" type="password"/>
+<button class="absolute right-4 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 flex items-center justify-center" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<div class="h-2"></div>
+<!-- Submit Button -->
+<button class="w-full h-14 bg-primary hover:bg-[#e6e205] text-black font-bold text-lg rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 flex items-center justify-center gap-2" type="button">
+<span>Entrar</span>
+<span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</form>
+<!-- Footer / Help -->
+
+</div>
+</div>
+</body></html>

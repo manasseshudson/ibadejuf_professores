@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard de Módulos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+  <div class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-3xl">
+
+    <!-- Cabeçalho -->
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-6">
+      <h1 class="text-2xl font-bold text-gray-800">Lista dos Módulos</h1>
+      <a href="/" class="bg-rose-500 hover:bg-rose-600 text-white px-4 py-2 rounded-xl flex items-center gap-2 mt-3 sm:mt-0 shadow">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 002 2h6a2 2 0 002-2v-1m-2-5V9a2 2 0 00-2-2h-6a2 2 0 00-2 2v1" />
+        </svg>
+        <span class="text-sm font-medium">Sair</span>
+      </a>
+    </div>
+
+    <!-- Cards superiores -->
+    <div class="grid grid-cols-1 gap-4 mb-6">
+
+      <div class="bg-green-100 rounded-xl p-4 text-center shadow-sm">
+        <p class="text-gray-700 text-base">Professor:
+          <span class="font-bold text-pink-600"><%= professor %></span>
+        </p>
+      </div>
+
+      <div class="bg-green-100 rounded-xl p-4 text-center shadow-sm">
+        <p class="text-gray-600 text-sm">Presentes</p>
+        <p id="total-presentes" class="text-3xl font-bold text-green-600"><%= qtdeTotalPresentesDia %></p>
+      </div>
+
+    </div>
+
+    <!-- Lista de módulos (transformada em cards mais bonitos) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+      <div class="bg-white p-5 rounded-2xl shadow border border-gray-100 hover:shadow-md transition">
+        <h2 class="text-lg font-semibold text-gray-800 mb-2">1º Ano</h2>
+        <p class="text-green-600 text-sm font-medium mb-4 bg-green-50 inline-block px-3 py-1 rounded-full">
+          <%= qtdepresencas1Ano %> - Presença
+        </p>
+        <a href="/materias/<%= id_professor %>/1" class="block text-center bg-rose-500 hover:bg-rose-600 text-white py-2 rounded-xl font-medium shadow">
+          Matérias
+        </a>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl shadow border border-gray-100 hover:shadow-md transition">
+        <h2 class="text-lg font-semibold text-gray-800 mb-2">2º Ano</h2>
+        <p class="text-green-600 text-sm font-medium mb-4 bg-green-50 inline-block px-3 py-1 rounded-full">
+          <%= qtdepresencas2Ano %> - Presença
+        </p>
+        <a href="/materias/<%= id_professor %>/2" class="block text-center bg-rose-500 hover:bg-rose-600 text-white py-2 rounded-xl font-medium shadow">
+          Matérias
+        </a>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl shadow border border-gray-100 hover:shadow-md transition">
+        <h2 class="text-lg font-semibold text-gray-800 mb-2">Médio</h2>
+        <p class="text-green-600 text-sm font-medium mb-4 bg-green-50 inline-block px-3 py-1 rounded-full">
+          <%= qtdepresencasMedio %> - Presença
+        </p>
+        <a href="/materias/<%= id_professor %>/3" class="block text-center bg-rose-500 hover:bg-rose-600 text-white py-2 rounded-xl font-medium shadow">
+          Matérias
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>

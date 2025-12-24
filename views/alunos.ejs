@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Presença</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-2">
+
+  <div class="bg-white shadow-lg rounded-2xl w-full max-w-md p-5">
+
+    <!-- HEADER LIMPO -->
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="text-lg font-bold text-gray-800">Lista de Presença</h1>
+
+      <!-- BOTÃO MENU -->
+      <button id="openMenu" class="p-2 px-4 bg-pink-500 text-white rounded-lg shadow">
+        ☰
+      </button>
+    </div>
+
+    <!-- MENU LATERAL -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden"></div>
+
+    <aside id="menu" class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg transform -translate-x-full transition-transform duration-300 p-4 z-50">
+
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-xl font-bold">Menu</h2>
+        <button id="closeMenu" class="text-gray-600 text-xl">✖</button>
+      </div>
+
+      <nav class="flex flex-col gap-3">
+
+        <button onclick="voltarMaterias()" class="w-full bg-pink-100 text-pink-600 font-semibold p-3 rounded-xl text-left">
+          📚 Matérias
+        </button>
+
+        <a href="/alunos_presentes/<%= id_professor %>/<%= id_materia %>/<%= modulo %>"
+           class="w-full bg-green-100 text-green-700 font-semibold p-3 rounded-xl text-left">
+          🔄 Extorno de Presenças
+        </a>
+
+        <button onclick="sair()" class="w-full bg-red-100 text-red-600 font-semibold p-3 rounded-xl text-left">
+          🚪 Sair
+        </button>
+
+      </nav>
+    </aside>
+
+    <!-- INFO DA MATÉRIA -->
+    <div class="flex flex-col gap-1 mt-3">
+      <span class="flex items-center gap-2 bg-emerald-100 text-emerald-700 font-semibold px-3 py-1 rounded-full text-sm w-fit">
+        <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
+        Matéria - <%= materia %>
+      </span>
+
+      <span class="flex items-center gap-1 text-sm text-green-700 ml-1">
+        <span class="w-2 h-2 bg-green-600 rounded-full"></span>
+        Presente: <%= Presente %>
+      </span>
+    </div>
+
+    <!-- PROFESSOR -->
+    <div class="bg-green-100 rounded-xl p-4 text-center shadow-sm my-4">
+      <p class="text-black-500 text-xg">Professor:
+        <span class="font-bold text-pink-600"><%= professor %></span>
+      </p>
+    </div>
+
+    <!-- CAMPO DE PESQUISA -->
+    <input
+      type="text"
+      id="pesquisa"
+      placeholder="Pesquisar aluno..."
+      class="w-full border border-gray-200 rounded-xl px-4 py-2 focus:ring-2 focus:ring-emerald-500 focus:outline-none mb-4"
+    >
+
+    <!-- LISTA DE ALUNOS -->
+    <div class="space-y-3" id="lista">
+      <% alunos.forEach(dados => { %>
+        <div class="aluno-item flex items-center justify-between border rounded-xl p-3 shadow-sm">
+          <span class="font-semibold text-gray-800 nome-aluno"><%= dados.nome %></span>
+          <button class="bg-gray-500 hover:bg-gray-600 text-white p-2 rounded-full shadow-sm"
+                  onclick="marcarPresenca(<%= dados.id_aluno %>)">
+            <i data-lucide="notebook-pen" class="w-4 h-4"></i>
+          </button>
+        </div>
+      <% }) %>
+    </div>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // MENU MOBILE
+    const menu = document.getElementById("menu");
+    const overlay = document.getElementById("overlay");
+
+    document.getElementById("openMenu").onclick = () => {
+      menu.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    };
+
+    function closeMenu() {
+      menu.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    }
+
+    document.getElementById("closeMenu").onclick = closeMenu;
+    overlay.onclick = closeMenu;
+
+    // LÓGICA ORIGINAL
+    function marcarPresenca(id_aluno) {
+      const postData = {
+        id_professor: <%= id_professor %>,
+        id_aluno,
+        id_materia: <%= id_materia %>,
+        id_modulo: <%= modulo %>,
+        data: dataAtualFormatada(),
+        hora: horaAtual()
+      };
+
+      fetch('/marcarPresenca', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(postData)
+      })
+      .then(response => {
+        if (!response.ok) throw new Error(`Erro HTTP! status: ${response.status}`);
+        return response.json();
+      })
+      .then(() => {
+        window.location.href = `/alunos/<%= id_professor %>/<%= id_materia %>/<%= modulo %>`;
+      })
+      .catch(error => console.error('Erro:', error));
+    }
+
+    const pesquisa = document.getElementById("pesquisa");
+
+    pesquisa.addEventListener("input", () => {
+      const termo = pesquisa.value.toLowerCase();
+      const alunos = document.querySelectorAll(".aluno-item");
+
+      alunos.forEach(item => {
+        const nome = item.querySelector(".nome-aluno").textContent.toLowerCase();
+        item.style.display = nome.includes(termo) ? "flex" : "none";
+      });
+    });
+
+    function horaAtual() {
+      const data = new Date();
+      return `${String(data.getHours()).padStart(2,"0")}:${String(data.getMinutes()).padStart(2,"0")}:${String(data.getSeconds()).padStart(2,"0")}`;
+    }
+
+    function dataAtualFormatada() {
+      const data = new Date();
+      return `${String(data.getDate()).padStart(2,"0")}/${String(data.getMonth()+1).padStart(2,"0")}/${data.getFullYear()}`;
+    }
+
+    function voltarMaterias() {
+      window.location.href = `/materias/<%= id_professor %>/<%= modulo %>`;
+    }
+
+    function sair() {
+      window.location.href = `/`;
+    }
+  </script>
+
+</body>
+</html>

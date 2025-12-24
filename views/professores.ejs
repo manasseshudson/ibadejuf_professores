@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matérias</title>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- jQuery + jQuery Mobile -->
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <style>
+    body {
+      background-color: #fffff;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .card {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      border-radius: 1rem;
+    }
+
+    /* Ajuste visual do select do jQuery Mobile */
+    .ui-select {
+      margin: 0 !important;
+      width: 100% !important;
+    }
+
+    .ui-select .ui-btn {
+      background-color: white !important;
+      border: 1px solid #d1d5db !important; /* Tailwind border-gray-300 */
+      color: #374151 !important; /* text-gray-700 */
+      border-radius: 0.5rem !important;
+      padding: 0.5rem 0.75rem !important;
+      font-size: 0.95rem !important;
+      font-weight: 500;
+      box-shadow: none !important;
+      text-align: left !important;
+    }
+
+    .ui-select .ui-btn:hover {
+      border-color: #ec4899 !important; /* hover border-pink-500 */
+    }
+
+    .ui-select .ui-icon-carat-d {
+      background-color: transparent !important;
+      border: none !important;
+      right: 0.75rem !important;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex justify-center items-center">
+	<div class="bg-white shadow-md rounded-2xl p-6 w-full max-w-md">
+		<div class="w-full max-w-2xl bg-white p-6 rounded-2xl card">
+			<div class="flex justify-between items-center mb-6">
+				<div><h1 class="text-xl font-semibold text-gray-800">Professores</h1></div>
+				<div class="flex items-center gap-2">
+					<a href="/" class="flex items-center bg-pink-500 text-white px-3 py-1.5 rounded-full text-sm font-medium hover:bg-pink-600 transition">
+					  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+					  </svg>
+					  Sair
+					</a>
+				</div>
+			</div>
+			<label for="materia" class="block text-sm font-medium text-gray-700 mb-2">Escolha seu nome na Lista</label>
+			<select name="materia" id="materia" data-theme="b" data-mini="true" style="width: 100%;min-height: 35px;">
+				<option value="">Escolha uma opção...</option>
+					<% professores.forEach( dados=> { %>
+						<option value="<%= dados.id_professor %>"><%= dados.nome %></option>
+					<% }) %>
+			</select>
+			<div class="flex justify-center mt-4">
+				<button id="botaoMateria" class="flex items-center bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-pink-600 transition">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+					</svg>
+					Módulos
+				</button>
+			</div>
+		</div>
+	</div>
+</body>
+
+
+
+
+  <script>
+    $(document).on("pagecreate", function() {
+      $("#materia").selectmenu();
+    });
+	document.getElementById('botaoMateria').addEventListener('click', function() {
+    const professoreSelecionado = document.getElementById('materia').value;
+
+    if (professoreSelecionado) {
+		//alert('professor: ' + professoreSelecionado);
+		window.location.href = "/modulo/"+professoreSelecionado;
+    } else {
+		alert('Por favor, selecione seu nome na lista.');
+    }
+  });
+	
+  </script>
+
+</html>
